@@ -1,0 +1,1160 @@
+[
+  {
+    "id": "manager_0001",
+    "type": "single",
+    "question": "4 × 9 = ?",
+    "options": [
+      54,
+      37,
+      36,
+      27
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0002",
+    "type": "single",
+    "question": "7 × 3 = ?",
+    "options": [
+      20,
+      27,
+      21,
+      18
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0003",
+    "type": "single",
+    "question": "21 ÷ 7 = ?",
+    "options": [
+      2,
+      6,
+      3,
+      5
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0004",
+    "type": "single",
+    "question": "62 - 31 = ?",
+    "options": [
+      34,
+      31,
+      29,
+      32
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0005",
+    "type": "single",
+    "question": "12 ÷ 6 = ?",
+    "options": [
+      4,
+      5,
+      0,
+      2
+    ],
+    "answer": "D",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0006",
+    "type": "single",
+    "question": "21 ÷ 3 = ?",
+    "options": [
+      5,
+      8,
+      7,
+      9
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0007",
+    "type": "single",
+    "question": "48 - 20 = ?",
+    "options": [
+      29,
+      31,
+      28,
+      30
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0008",
+    "type": "single",
+    "question": "24 ÷ 4 = ?",
+    "options": [
+      5,
+      9,
+      6,
+      7
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0009",
+    "type": "single",
+    "question": "5 + 6 = ?",
+    "options": [
+      13,
+      11,
+      14,
+      10
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0010",
+    "type": "single",
+    "question": "3 × 9 = ?",
+    "options": [
+      45,
+      26,
+      27,
+      30
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0011",
+    "type": "single",
+    "question": "8 × 4 + 5 = ?",
+    "options": [
+      38,
+      36,
+      42,
+      37
+    ],
+    "answer": "D",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0012",
+    "type": "single",
+    "question": "25 + 36 = ?",
+    "options": [
+      64,
+      61,
+      60,
+      62
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0013",
+    "type": "single",
+    "question": "36 ÷ 6 = ?",
+    "options": [
+      9,
+      6,
+      8,
+      7
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0014",
+    "type": "single",
+    "question": "9 × 5 + 4 = ?",
+    "options": [
+      41,
+      50,
+      49,
+      81
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0015",
+    "type": "single",
+    "question": "7 × 4 + 9 = ?",
+    "options": [
+      36,
+      46,
+      37,
+      91
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0016",
+    "type": "single",
+    "question": "22 - 19 = ?",
+    "options": [
+      4,
+      3,
+      6,
+      5
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0017",
+    "type": "single",
+    "question": "22 + 35 = ?",
+    "options": [
+      56,
+      57,
+      54,
+      59
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0018",
+    "type": "single",
+    "question": "20 ÷ 5 = ?",
+    "options": [
+      7,
+      4,
+      5,
+      2
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0019",
+    "type": "single",
+    "question": "12 + 26 = ?",
+    "options": [
+      41,
+      38,
+      39,
+      40
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0020",
+    "type": "single",
+    "question": "37 + 27 = ?",
+    "options": [
+      66,
+      65,
+      67,
+      64
+    ],
+    "answer": "D",
+    "knowledge": "店长管理知识",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0021",
+    "type": "single",
+    "question": "7 × 5 + 5 = ?",
+    "options": [
+      45,
+      70,
+      40,
+      41
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0022",
+    "type": "single",
+    "question": "30 ÷ 6 = ?",
+    "options": [
+      5,
+      7,
+      6,
+      3
+    ],
+    "answer": "A",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0023",
+    "type": "single",
+    "question": "81 ÷ 9 = ?",
+    "options": [
+      7,
+      9,
+      12,
+      8
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0024",
+    "type": "single",
+    "question": "56 ÷ 7 = ?",
+    "options": [
+      10,
+      9,
+      8,
+      6
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0025",
+    "type": "single",
+    "question": "2 × 5 + 5 = ?",
+    "options": [
+      16,
+      15,
+      20,
+      14
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0026",
+    "type": "single",
+    "question": "24 ÷ 6 = ?",
+    "options": [
+      2,
+      7,
+      5,
+      4
+    ],
+    "answer": "D",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0027",
+    "type": "single",
+    "question": "9 × 2 + 5 = ?",
+    "options": [
+      23,
+      24,
+      22,
+      13
+    ],
+    "answer": "A",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0028",
+    "type": "single",
+    "question": "15 ÷ 5 = ?",
+    "options": [
+      4,
+      5,
+      6,
+      3
+    ],
+    "answer": "D",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0029",
+    "type": "single",
+    "question": "16 ÷ 2 = ?",
+    "options": [
+      9,
+      8,
+      7,
+      10
+    ],
+    "answer": "B",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0030",
+    "type": "single",
+    "question": "3 × 9 = ?",
+    "options": [
+      30,
+      45,
+      27,
+      28
+    ],
+    "answer": "C",
+    "knowledge": "店长管理知识",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0031",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "3 + 9 = 27",
+      "3 + 9 = 26",
+      "3 × 9 = 27",
+      "3 × 9 = 28"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0032",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "2 + 3 = 6",
+      "2 × 3 = 6",
+      "2 + 3 = 5",
+      "2 × 3 = 7"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0033",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "6 + 6 = 35",
+      "6 + 6 = 36",
+      "6 × 6 = 36",
+      "6 × 6 = 37"
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0034",
+    "type": "multi",
+    "question": "下列算式中，结果等于 19 的有哪些？",
+    "options": [
+      "8 + 5 = 15",
+      "9 + 10 = 19",
+      "5 + 8 = 12",
+      "3 + 3 = 7"
+    ],
+    "answer": [
+      "B"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0035",
+    "type": "multi",
+    "question": "下列算式中，结果等于 6 的有哪些？",
+    "options": [
+      "3 × 3 = 6",
+      "3 + 4 = 6",
+      "3 × 3 = 7",
+      "3 + 3 = 6"
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0036",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "2 + 9 = 18",
+      "2 × 9 = 18",
+      "2 + 9 = 17",
+      "2 × 9 = 19"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0037",
+    "type": "multi",
+    "question": "下列算式中，结果等于 10 的有哪些？",
+    "options": [
+      "5 × 5 = 11",
+      "5 + 6 = 10",
+      "5 × 5 = 10",
+      "5 + 5 = 10"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0038",
+    "type": "multi",
+    "question": "下列算式中，结果等于 29 的有哪些？",
+    "options": [
+      "4 + 3 = 8",
+      "9 + 5 = 13",
+      "14 + 15 = 29",
+      "6 + 2 = 10"
+    ],
+    "answer": [
+      "C"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0039",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "3 × 3 = 9",
+      "3 + 3 = 9",
+      "3 + 3 = 8",
+      "3 × 3 = 10"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0040",
+    "type": "multi",
+    "question": "下列算式中，结果等于 22 的有哪些？",
+    "options": [
+      "8 + 8 = 18",
+      "8 + 8 = 15",
+      "11 + 11 = 22",
+      "4 + 8 = 13"
+    ],
+    "answer": [
+      "C"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0041",
+    "type": "multi",
+    "question": "下列算式中，结果等于 8 的有哪些？",
+    "options": [
+      "4 + 5 = 8",
+      "4 × 4 = 9",
+      "4 × 4 = 8",
+      "4 + 4 = 8"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0042",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "8 + 4 = 13",
+      "3 + 2 = 7",
+      "5 + 7 = 13",
+      "6 + 6 = 12"
+    ],
+    "answer": [
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0043",
+    "type": "multi",
+    "question": "下列算式中，结果等于 8 的有哪些？",
+    "options": [
+      "4 × 4 = 8",
+      "4 × 4 = 9",
+      "4 + 4 = 8",
+      "4 + 5 = 8"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0044",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "5 + 8 = 39",
+      "5 × 8 = 41",
+      "5 × 8 = 40",
+      "5 + 8 = 40"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0045",
+    "type": "multi",
+    "question": "下列算式中，结果等于 14 的有哪些？",
+    "options": [
+      "7 + 7 = 14",
+      "8 + 5 = 14",
+      "3 + 6 = 10",
+      "9 + 5 = 14"
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0046",
+    "type": "multi",
+    "question": "下列算式中，结果等于 36 的有哪些？",
+    "options": [
+      "3 + 8 = 12",
+      "5 + 2 = 6",
+      "7 + 7 = 16",
+      "18 + 18 = 36"
+    ],
+    "answer": [
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0047",
+    "type": "multi",
+    "question": "下列算式中，结果等于 27 的有哪些？",
+    "options": [
+      "9 + 6 = 17",
+      "6 + 5 = 10",
+      "13 + 14 = 27",
+      "9 + 7 = 15"
+    ],
+    "answer": [
+      "C"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0048",
+    "type": "multi",
+    "question": "下列算式中，结果等于 19 的有哪些？",
+    "options": [
+      "5 + 8 = 14",
+      "9 + 10 = 19",
+      "2 + 5 = 9",
+      "8 + 8 = 17"
+    ],
+    "answer": [
+      "B"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0049",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "7 + 8 = 55",
+      "7 + 8 = 56",
+      "7 × 8 = 57",
+      "7 × 8 = 56"
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0050",
+    "type": "multi",
+    "question": "下列算式中，结果等于 25 的有哪些？",
+    "options": [
+      "2 + 8 = 9",
+      "4 + 2 = 7",
+      "7 + 4 = 12",
+      "12 + 13 = 25"
+    ],
+    "answer": [
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0051",
+    "type": "multi",
+    "question": "下列算式中，结果等于 4 的有哪些？",
+    "options": [
+      "2 + 3 = 4",
+      "2 + 2 = 4",
+      "2 × 2 = 5",
+      "2 × 2 = 4"
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0052",
+    "type": "multi",
+    "question": "下列算式中，结果等于 35 的有哪些？",
+    "options": [
+      "8 + 8 = 15",
+      "5 + 3 = 10",
+      "2 + 2 = 3",
+      "17 + 18 = 35"
+    ],
+    "answer": [
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0053",
+    "type": "multi",
+    "question": "下列算式中，结果等于 36 的有哪些？",
+    "options": [
+      "18 + 18 = 36",
+      "2 + 4 = 5",
+      "9 + 4 = 15",
+      "4 + 5 = 10"
+    ],
+    "answer": [
+      "A"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0054",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "8 + 9 = 72",
+      "8 + 9 = 71",
+      "8 × 9 = 72",
+      "8 × 9 = 73"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0055",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "6 × 6 = 13",
+      "6 × 6 = 12",
+      "6 + 6 = 12",
+      "6 + 7 = 12"
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0056",
+    "type": "multi",
+    "question": "下列算式中，结果等于 10 的有哪些？",
+    "options": [
+      "3 + 8 = 13",
+      "5 + 5 = 10",
+      "2 + 5 = 8",
+      "7 + 9 = 15"
+    ],
+    "answer": [
+      "B"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0057",
+    "type": "multi",
+    "question": "下列算式中，结果等于 8 的有哪些？",
+    "options": [
+      "4 + 5 = 8",
+      "4 × 4 = 9",
+      "4 × 4 = 8",
+      "4 + 4 = 8"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0058",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "6 + 6 = 12",
+      "6 + 7 = 12",
+      "6 × 6 = 12",
+      "6 × 6 = 13"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0059",
+    "type": "multi",
+    "question": "下列算式中，结果等于 10 的有哪些？",
+    "options": [
+      "5 + 6 = 10",
+      "5 × 5 = 11",
+      "5 × 5 = 10",
+      "5 + 5 = 10"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0060",
+    "type": "multi",
+    "question": "下列算式中，结果等于 23 的有哪些？",
+    "options": [
+      "8 + 6 = 13",
+      "8 + 3 = 10",
+      "11 + 12 = 23",
+      "2 + 9 = 12"
+    ],
+    "answer": [
+      "C"
+    ],
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "manager_0061",
+    "type": "judge",
+    "question": "5 × 3 = 15",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0062",
+    "type": "judge",
+    "question": "16 ÷ 4 = 5",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0063",
+    "type": "judge",
+    "question": "7 × 2 = 13",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0064",
+    "type": "judge",
+    "question": "3 × 2 = 6",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0065",
+    "type": "judge",
+    "question": "2 × 3 = 5",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0066",
+    "type": "judge",
+    "question": "3 × 7 = 22",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0067",
+    "type": "judge",
+    "question": "12 - 9 = 3",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0068",
+    "type": "judge",
+    "question": "8 ÷ 4 = 2",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0069",
+    "type": "judge",
+    "question": "15 + 2 = 18",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0070",
+    "type": "judge",
+    "question": "13 + 13 = 26",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0071",
+    "type": "judge",
+    "question": "8 × 5 = 40",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0072",
+    "type": "judge",
+    "question": "14 - 12 = 1",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0073",
+    "type": "judge",
+    "question": "9 × 4 = 36",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0074",
+    "type": "judge",
+    "question": "12 ÷ 3 = 3",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0075",
+    "type": "judge",
+    "question": "63 ÷ 9 = 7",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0076",
+    "type": "judge",
+    "question": "4 + 5 = 9",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0077",
+    "type": "judge",
+    "question": "3 × 7 = 21",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0078",
+    "type": "judge",
+    "question": "9 × 2 = 18",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0079",
+    "type": "judge",
+    "question": "7 × 3 = 21",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "manager_0080",
+    "type": "judge",
+    "question": "13 - 12 = 2",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  }
+]

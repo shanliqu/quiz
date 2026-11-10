@@ -120,7 +120,7 @@ git init
 git add .
 
 # 3. 提交
-git commit -m "扫码答题程序：微信扫码 + 随机50题 + 自动判分 + 逐题解析"
+git commit -m "扫码答题程序：微信扫码 + 随机50题 + 自动判分"
 
 # 4. 关联远程仓库（把 你的用户名 换成你自己的）
 git remote add origin https://github.com/你的用户名/quiz.git
@@ -301,8 +301,11 @@ https://你的用户名.github.io/quiz/selfcheck.html
 
 ## 第 6 步：换成真实题库并重新部署
 
-1. 把你的题库覆盖 `d:\quiz\data\questions.sample.json`
-   （或改 `d:\quiz\assets\app.js` 里 `bankUrl` 指向你的文件名）
+1. 把你的题库覆盖到对应文件（**两个都要**）：
+   - 店员：`d:\quiz\data\questions.staff.json`
+   - 店长：`d:\quiz\data\questions.manager.json`
+
+   格式详见 **[题库导入说明.md](题库导入说明.md)**
 
 2. 本地先验一遍：
 
@@ -402,7 +405,7 @@ Actions 页面 → **Deploy to GitHub Pages** → **Run workflow**。
 
 浏览器按 `F12` → Console 看报错。
 
-- 检查 `data/questions.sample.json` 是否真的推上去了（仓库页面能看到吗）
+- 检查 `data/questions.staff.json` / `data/questions.manager.json` 是否真的推上去了（仓库页面能看到吗）
 - 检查文件名大小写完全一致
 - 检查 JSON 格式合法（不能有尾随逗号）
 
@@ -493,9 +496,11 @@ git push
 ## 部署后最终检查清单
 
 - [ ] 电脑浏览器打开 `https://用户名.github.io/quiz/` → 显示答题首页
-- [ ] 打开 `https://用户名.github.io/quiz/cast.html` → 显示二维码和网址
-- [ ] 手机微信扫二维码 → 直接进答题页
+- [ ] 打开 `https://用户名.github.io/quiz/cast.html` → 显示**店员 / 店长两张二维码**和网址
+- [ ] 手机微信扫**店员码** → 进入店员答题首页（显示「店员」标签）
+- [ ] 手机微信扫**店长码** → 进入店长答题首页（显示「店长」标签）
 - [ ] 答完 50 题 → 显示总分、题号总览（绿/红/灰）
-- [ ] 点某个题号 → 展开该题解析
-- [ ] 点「查看全体详解」→ 50 题每题下方都有解析
+- [ ] 成绩页显示「单选 X/20」「多选 X/20」「判断 X/10」
+- [ ] 点某个题号 → 展开该题答案（我的答案 / 正确答案，无解析）
+- [ ] 点「查看全体答案」→ 50 题每题都有正确答案
 - [ ] 换到另一台手机扫同一个码 → 能独立答题、各自算分

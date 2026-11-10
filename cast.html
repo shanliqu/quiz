@@ -5,22 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>扫码答题 · 入口二维码</title>
 <link rel="stylesheet" href="assets/style.css">
+<style>
+  .cast-qrs{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:18px 0 8px;}
+  .cast-qr-card{background:#fff;border-radius:16px;padding:18px 18px 14px;
+    box-shadow:0 6px 22px rgba(15,23,42,.07);text-align:center;min-width:300px;}
+  .cast-qr-role{display:inline-block;padding:5px 16px;border-radius:20px;font-size:15px;font-weight:700;}
+  .cast-qr-role.role-staff{background:#dcfce7;color:#15803d;}
+  .cast-qr-role.role-manager{background:#fef3c7;color:#b45309;}
+  .cast-qr-name{font-size:17px;font-weight:700;margin:12px 0 4px;}
+  .cast-qr-desc{font-size:12.5px;color:#64748b;margin-bottom:12px;line-height:1.6;}
+  .cast-qr-url{font-size:12px;color:#94a3b8;word-break:break-all;margin-top:10px;line-height:1.5;}
+</style>
 </head>
 <body>
 <div class="cast-body">
   <div class="cast-title">📝 知识竞赛答题</div>
-  <div class="cast-sub" id="cast-sub">微信扫一扫下方二维码，进入答题</div>
+  <div class="cast-sub" id="cast-sub">微信扫一扫下方二维码，按身份进入对应答题</div>
 
-  <div id="cast-qr">
-    <canvas id="cast-qr-canvas" width="360" height="360" style="width:360px;height:360px;display:block"></canvas>
+  <div class="cast-qrs">
+    <div class="cast-qr-card">
+      <span class="cast-qr-role role-staff">店员</span>
+      <div class="cast-qr-name">店员答题</div>
+      <div class="cast-qr-desc">共 50 题 · 单选 20 / 多选 20 / 判断 10</div>
+      <canvas id="qr-staff" width="300" height="300" style="width:300px;height:300px;display:block;margin:0 auto"></canvas>
+      <div class="cast-qr-url" id="url-staff">正在获取地址…</div>
+    </div>
+
+    <div class="cast-qr-card">
+      <span class="cast-qr-role role-manager">店长</span>
+      <div class="cast-qr-name">店长答题</div>
+      <div class="cast-qr-desc">共 50 题 · 单选 20 / 多选 20 / 判断 10</div>
+      <canvas id="qr-manager" width="300" height="300" style="width:300px;height:300px;display:block;margin:0 auto"></canvas>
+      <div class="cast-qr-url" id="url-manager">正在获取地址…</div>
+    </div>
   </div>
 
-  <div class="cast-url" id="cast-url">正在获取地址…</div>
-
   <div class="cast-stat">
-    <div>答题人数<b id="st-count">0</b></div>
-    <div>平均分<b id="st-avg">0</b></div>
-    <div>最高分<b id="st-max">0</b></div>
+    <div>店员答题<b id="st-count-staff">0</b></div>
+    <div>店员平均分<b id="st-avg-staff">0</b></div>
+    <div>店长答题<b id="st-count-manager">0</b></div>
+    <div>店长平均分<b id="st-avg-manager">0</b></div>
   </div>
 
   <div class="cast-tip" id="cast-tip">手机需与本机连接同一个 WiFi</div>
@@ -40,12 +64,15 @@
 <script src="assets/vendor/qrcode-render.js"></script>
 <script>
 (function(){
-  var canvas = document.getElementById('cast-qr-canvas');
+  var ROLES = [
+    { key: 'staff',   label: '店员', canvasId: 'qr-staff',   urlId: 'url-staff' },
+    { key: 'manager', label: '店长', canvasId: 'qr-manager', urlId: 'url-manager' }
+  ];
 
-  function draw(text){
+  function draw(canvas, text){
     try{
       QRCodeRender.toCanvas(canvas, text, {
-        width: 360, margin: 2, correctLevel: 'M',
+        width: 300, margin: 2, correctLevel: 'M',
         dark: '#0f172a', light: '#ffffff'
       });
     }catch(e){
@@ -54,7 +81,7 @@
       if(ctx){
         ctx.fillStyle='#ef4444';
         ctx.font='16px sans-serif';
-        ctx.fillText('二维码生成失败: ' + e.message, 20, 180);
+        ctx.fillText('二维码生成失败: ' + e.message, 20, 150);
       }
     }
   }
@@ -63,7 +90,6 @@
     document.getElementById('cast-warn').style.display = 'block';
     document.getElementById('cw-list').innerHTML = list || '';
     document.getElementById('cast-sub').textContent = msg || '请检查网络连接';
-    document.getElementById('cast-qr').style.opacity = '.25';
   }
 
   /** 当前站点基础目录（带尾斜杠），兼容子路径托管 */
@@ -123,28 +149,36 @@
       });
   }
 
-  resolveUrl().then(function(url){
-    if(url){
-      document.getElementById('cast-url').textContent = url;
-      draw(url);
-    } else {
-      document.getElementById('cast-url').textContent = '(无可用地址)';
-      // 兜底画本机地址
-      draw(location.origin + '/');
-    }
+  resolveUrl().then(function(base){
+    ROLES.forEach(function(role){
+      var url = base + '?role=' + role.key;
+      document.getElementById(role.urlId).textContent = url;
+      draw(document.getElementById(role.canvasId), url);
+    });
   });
 
-  function stats(){
+  function statsFor(role){
     try{
-      var arr = JSON.parse(localStorage.getItem('quiz_stats_v1')||'[]');
-      document.getElementById('st-count').textContent = arr.length;
+      var arr = JSON.parse(localStorage.getItem('quiz_stats_v1_' + role) || '[]');
+      return arr;
+    }catch(e){ return []; }
+  }
+
+  function stats(){
+    ROLES.forEach(function(role){
+      var arr = statsFor(role.key);
+      var cnt = document.getElementById('st-count-' + role.key);
+      var avg = document.getElementById('st-avg-' + role.key);
+      if(!cnt || !avg) return;
+      cnt.textContent = arr.length;
       if(arr.length){
-        var sum=0,max=0;
-        arr.forEach(function(x){ sum+=x.score; if(x.score>max) max=x.score; });
-        document.getElementById('st-avg').textContent = Math.round(sum/arr.length);
-        document.getElementById('st-max').textContent = max;
+        var sum = 0;
+        arr.forEach(function(x){ sum += x.score; });
+        avg.textContent = Math.round(sum / arr.length);
+      } else {
+        avg.textContent = '0';
       }
-    }catch(e){}
+    });
   }
   stats();
   setInterval(stats, 2000);

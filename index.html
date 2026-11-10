@@ -14,12 +14,13 @@
   <section class="page" id="page-home">
     <div class="home-card">
       <div class="home-icon">📝</div>
-      <h1>知识竞赛答题</h1>
+      <span class="home-role" id="home-role">店员</span>
+      <h1 id="home-title">知识竞赛答题</h1>
       <p class="home-sub">共 <b id="home-total">50</b> 道题 · 单选 20 / 多选 20 / 判断 10</p>
       <ul class="home-rules">
         <li>⏱️ 无倒计时，请认真作答</li>
         <li>🔒 答案提交后不可修改</li>
-        <li>📊 交卷后可查看得分与逐题解析</li>
+        <li>📊 交卷后可查看得分与全部答案</li>
       </ul>
       <button class="btn btn-primary btn-lg" id="btn-start">开始答题</button>
       <p class="home-tip">微信内打开可能出现提示，选择「继续访问」即可</p>
@@ -60,7 +61,7 @@
     </div>
 
     <div class="res-nav">
-      <button class="btn btn-ghost btn-sm" id="btn-show-all">查看全体详解</button>
+      <button class="btn btn-ghost btn-sm" id="btn-show-all">查看全体答案</button>
       <button class="btn btn-ghost btn-sm" id="btn-restart">再答一次</button>
     </div>
 
@@ -74,11 +75,11 @@
     <div class="res-detail" id="res-detail"></div>
   </section>
 
-  <!-- 全体详解页 -->
+  <!-- 全体答案页 -->
   <section class="page" id="page-detail">
     <header class="detail-head">
       <button class="back-btn" id="btn-back-result">‹ 返回成绩</button>
-      <span>全体详解</span>
+      <span>全体答案</span>
     </header>
     <div class="detail-list" id="detail-list"></div>
   </section>

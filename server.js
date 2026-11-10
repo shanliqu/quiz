@@ -291,16 +291,19 @@ server.listen(PORT, '0.0.0.0', async () => {
   console.log('  按 Ctrl+C 停止');
   console.log('==================================================');
 
-  // 生成二维码
-  const target = process.env.QUIZ_URL ||
+  // 生成两张二维码（店员 / 店长）
+  const base = process.env.QUIZ_URL ||
     (best ? `http://${best.address}:${PORT}/` : `http://localhost:${PORT}/`);
-  try {
-    const buf = await QRCode.toBuffer(target, {
-      width: 720, margin: 2, errorCorrectionLevel: 'M'
-    });
-    fs.writeFileSync(path.join(ROOT, 'qrcode.png'), buf);
-    console.log('  二维码已保存: qrcode.png   内容: ' + target);
-  } catch (e) {
-    console.log('  二维码生成失败: ' + e.message);
+  for (const [role, label] of [['staff', '店员'], ['manager', '店长']]) {
+    const target = base + (base.indexOf('?') >= 0 ? '&' : '?') + 'role=' + role;
+    try {
+      const buf = await QRCode.toBuffer(target, {
+        width: 720, margin: 2, errorCorrectionLevel: 'M'
+      });
+      fs.writeFileSync(path.join(ROOT, `qrcode.${role}.png`), buf);
+      console.log(`  [${label}] 二维码已保存: qrcode.${role}.png   内容: ${target}`);
+    } catch (e) {
+      console.log(`  [${label}] 二维码生成失败: ` + e.message);
+    }
   }
 });

@@ -73,21 +73,34 @@ const flush = () => new Promise(r => setTimeout(r, 60));
   await flush();
 
   t('解析出局域网地址并显示', () => {
-    eq(document.getElementById('cast-url').textContent, 'http://192.168.83.1:8080/');
+    ok(document.getElementById('url-staff').textContent.indexOf('192.168.83.1') >= 0,
+       '店员二维码地址不对: ' + document.getElementById('url-staff').textContent);
   });
 
-  t('二维码画布已渲染', () => {
-    const c = document.getElementById('cast-qr-canvas');
-    ok(c, '缺少 canvas');
-    ok(c.width === 360 && c.height === 360, '画布尺寸不对');
+  t('两张二维码地址都带角色参数', () => {
+    const s = document.getElementById('url-staff').textContent;
+    const m = document.getElementById('url-manager').textContent;
+    ok(s.indexOf('role=staff') >= 0, '店员码缺少 role=staff: ' + s);
+    ok(m.indexOf('role=manager') >= 0, '店长码缺少 role=manager: ' + m);
   });
 
-  t('二维码内容确实是解析出的地址（真正画出了码）', () => {
+  t('两张二维码画布都已渲染', () => {
+    ['qr-staff', 'qr-manager'].forEach(id => {
+      const c = document.getElementById(id);
+      ok(c, '缺少 canvas ' + id);
+      ok(c.width === 300 && c.height === 300, id + ' 尺寸不对');
+    });
+  });
+
+  t('两张二维码都真正画出了暗色模块', () => {
     const dark = drawn.filter(d => d[0] === '#0f172a' && d[3] > 0 && d[4] > 0);
-    ok(dark.length > 100, '二维码暗色模块过少，说明没有真正绘制: ' + dark.length);
-    // 用渲染器独立重建矩阵，确认内容一致
-    const m = window.QRCodeRender.build('http://192.168.83.1:8080/', 'M');
-    ok(m.size >= 21, '模块数异常');
+    ok(dark.length > 200, '二维码暗色模块过少，说明没有真正绘制: ' + dark.length);
+    // 用渲染器独立重建两张矩阵，确认内容一致
+    const base = 'http://192.168.83.1:8080/';
+    ['staff', 'manager'].forEach(k => {
+      const m = window.QRCodeRender.build(base + '?role=' + k, 'M');
+      ok(m.size >= 21, '模块数异常');
+    });
   });
 
   t('没有出现二维码生成失败（QRCodeRender 未定义等）', () => {
@@ -96,28 +109,28 @@ const flush = () => new Promise(r => setTimeout(r, 60));
   });
 
   t('列出所有检测到的网卡', () => {
-    const html = document.getElementById('cast-ifs').innerHTML;
-    ok(html.includes('192.168.83.1'), '未列出可用网卡地址');
-    ok(html.includes('100.96.222.30'), '未列出不可用网卡地址');
-    ok(html.includes('WLAN'), '未列出网卡名');
-    ok(html.includes('🟢'), '未标记可用状态');
+    const h = document.getElementById('cast-ifs').innerHTML;
+    ok(h.includes('192.168.83.1'), '未列出可用网卡地址');
+    ok(h.includes('100.96.222.30'), '未列出不可用网卡地址');
+    ok(h.includes('WLAN'), '未列出网卡名');
+    ok(h.includes('🟢'), '未标记可用状态');
   });
 
-  t('统计区读取 localStorage 并显示人数/平均分/最高分', () => {
-    store['quiz_stats_v1'] = JSON.stringify([
-      { t: 1, score: 80, correct: 40, total: 50 },
-      { t: 2, score: 100, correct: 50, total: 50 },
-      { t: 3, score: 60, correct: 30, total: 50 }
+  t('两个角色的统计分别显示', () => {
+    store['quiz_stats_v1_staff'] = JSON.stringify([
+      { t: 1, role: 'staff', score: 80 },
+      { t: 2, role: 'staff', score: 100 }
     ]);
-    // 手动触发一次 stats 刷新
-    const ev = new window.Event('load');
-    window.dispatchEvent(ev);
-    // 直接调用内部逻辑不方便，改为等待轮询
+    store['quiz_stats_v1_manager'] = JSON.stringify([
+      { t: 3, role: 'manager', score: 60 }
+    ]);
+    // 手动触发一次 stats 刷新：等待轮询
     return new Promise(res => setTimeout(() => {
       try {
-        eq(document.getElementById('st-count').textContent, '3', '人数不对');
-        eq(document.getElementById('st-avg').textContent, '80', '平均分不对');
-        eq(document.getElementById('st-max').textContent, '100', '最高分不对');
+        eq(document.getElementById('st-count-staff').textContent, '2', '店员人数不对');
+        eq(document.getElementById('st-avg-staff').textContent, '90', '店员平均分不对');
+        eq(document.getElementById('st-count-manager').textContent, '1', '店长人数不对');
+        eq(document.getElementById('st-avg-manager').textContent, '60', '店长平均分不对');
         res();
       } catch (e) { throw e; }
     }, 2200));

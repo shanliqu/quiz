@@ -3,6 +3,6 @@ __pycache__/
 *.pyc
 .venv*/
 .qr_verify/
-qrcode.png
+qrcode*.png
 online-qr.png
 .DS_Store

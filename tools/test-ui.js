@@ -21,7 +21,9 @@ console.log('\n=== 界面层端到端测试 (jsdom) ===\n');
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const coreJs = fs.readFileSync(path.join(ROOT, 'assets', 'core.js'), 'utf8');
 const appJs = fs.readFileSync(path.join(ROOT, 'assets', 'app.js'), 'utf8');
-const bank = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'questions.sample.json'), 'utf8'));
+const bank = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'questions.staff.json'), 'utf8'));
+const staffBank = bank;
+const mgrBank = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'questions.manager.json'), 'utf8'));
 
 const dom = new JSDOM(html, { url: 'http://localhost:8080/', pretendToBeVisual: true, runScripts: 'outside-only' });
 const { window } = dom;
@@ -37,10 +39,16 @@ Object.defineProperty(window, 'localStorage', {
   },
   configurable: true
 });
-window.fetch = () => Promise.resolve({
-  ok: true, status: 200,
-  json: () => Promise.resolve(bank)
-});
+// 按请求的题库路径返回对应题库
+const banks = {
+  'data/questions.staff.json': staffBank,
+  'data/questions.manager.json': mgrBank
+};
+window.fetch = (url) => {
+  const key = String(url).split('?')[0];
+  const bank = banks[key] || staffBank;
+  return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve(bank) });
+};
 
 window.eval(coreJs);
 window.eval(appJs);
@@ -53,10 +61,15 @@ function activePage() {
 }
 function flush() { return new Promise(r => setTimeout(r, 30)); }
 
-/** 前进到指定题型的第一道题（题型是乱序的，不能假设位置） */
+/** 跳到指定题型的第一道题
+ *  试卷分段固定：1-20 单选 / 21-40 多选 / 41-50 判断
+ */
 function gotoType(label) {
-  let guard = 0;
-  while ($('q-type').textContent !== label && guard++ < 60) click($('btn-next'));
+  const ranges = { '单选题': [0, 20], '多选题': [20, 40], '判断题': [40, 50] };
+  const r = ranges[label];
+  if (!r) throw new Error('未知题型 ' + label);
+  const target = parseInt($('q-cur').textContent, 10) - 1;
+  for (let i = target; i < r[0]; i++) click($('btn-next'));
   if ($('q-type').textContent !== label) throw new Error('未找到题型 ' + label);
 }
 
@@ -164,23 +177,37 @@ function gotoType(label) {
     ok(cls.some(c => c.includes('none')), '应存在未答的灰色格子');
   });
 
-  t('点击题号展开该题解析（含题干、我的答案、正确答案、解析）', () => {
+  t('点击题号展开该题答案（含题干、我的答案、正确答案、无解析）', () => {
     const cell = Array.from($('res-grid').children).find(c => c.className.includes('bad')) ||
                  $('res-grid').children[0];
     click(cell);
     const h = $('res-detail').innerHTML;
-    ok(h.includes('dc-analysis'), '缺少解析块');
     ok(h.includes('正确答案'), '缺少正确答案');
     ok(h.includes('我的答案'), '缺少我的答案');
-    ok(h.includes('📖 解析'), '缺少解析标题');
+    ok(!h.includes('dc-analysis'), '不应再有解析块');
+    ok(!h.includes('📖 解析'), '不应再有解析标题');
   });
 
-  t('查看全体详解渲染 50 张解析卡，每题都有解析正文', () => {
+  t('查看全体答案渲染 50 张卡片，每题都有正确答案', () => {
     click($('btn-show-all'));
-    eq(activePage(), 'page-detail', '未进入详解页');
-    eq($('detail-list').children.length, 50, '详解卡片数量不对');
+    eq(activePage(), 'page-detail', '未进入答案页');
+    eq($('detail-list').children.length, 50, '答案卡片数量不对');
     const texts = Array.from($('detail-list').children).map(c => c.textContent);
-    ok(texts.every(x => x.includes('解析')), '有卡片缺少解析');
+    ok(texts.every(x => x.includes('正确答案')), '有卡片缺少正确答案');
+    ok(texts.every(x => !x.includes('解析')), '有卡片仍含解析');
+  });
+
+  t('成绩页分母为 20/20/10（单选/多选/判断）', () => {
+    click($('btn-back-result'));
+    const stats = Array.from($('res-stats').children).map(e => e.textContent);
+    const joined = stats.join(' ');
+    ok(/单选\d+\/20/.test(joined), '单选分母应为 20: ' + joined);
+    ok(/多选\d+\/20/.test(joined), '多选分母应为 20: ' + joined);
+    ok(/判断\d+\/10/.test(joined), '判断分母应为 10: ' + joined);
+  });
+
+  t('首页显示当前角色（默认店员）', () => {
+    eq($('home-role').textContent, '店员');
   });
 
   t('返回成绩页正常', () => {
@@ -197,14 +224,24 @@ function gotoType(label) {
     eq($('res-detail').innerHTML, '');
   });
 
-  t('答题进度写入 localStorage', async () => {
+  t('答题进度写入 localStorage（按角色隔离）', async () => {
     gotoType('单选题');
     click($('q-options').children[0]);
     await flush();
-    const saved = JSON.parse(store['quiz_state_v1']);
+    const saved = JSON.parse(store['quiz_state_v1_staff']);
+    ok(saved, '未写入店员角色的进度');
+    eq(saved.role, 'staff');
     eq(saved.idx, 0);
     ok(saved.paper.length === 50, '未保存试卷');
     ok(Object.keys(saved.answers).length > 0, '未保存答案');
+  });
+
+  t('成绩统计按角色分别记录', () => {
+    const stats = JSON.parse(store['quiz_stats_v1_staff'] || '[]');
+    ok(Array.isArray(stats), '店员统计格式错误');
+    ok(stats.length > 0, '未记录店员成绩');
+    ok(stats[0].role === 'staff', '统计未标记角色');
+    ok(!store['quiz_stats_v1_manager'], '不应写入店长的统计');
   });
 
   t('全部答对时成绩为 100 分', () => {

@@ -7,7 +7,6 @@
   var C = window.QuizCore;
 
   var CONFIG = {
-    bankUrl: 'data/questions.sample.json',   // 相对路径，自动适配子路径托管
     quota: { single: 20, multi: 20, judge: 10 },
     score: { single: 2, multi: 2, judge: 2 },   // 满分 100
     storageKey: 'quiz_state_v1',
@@ -17,12 +16,13 @@
   var TYPE_LABEL = C.TYPE_LABEL;
   var LETTERS = C.LETTERS;
 
-  var S = { bank: [], paper: [], answers: {}, idx: 0, result: null };
+  var S = { role: null, bank: [], paper: [], answers: {}, idx: 0, result: null };
 
   var el = {};
   function $(id) { return document.getElementById(id); }
   function cacheDom() {
     ['page-home','page-quiz','page-result','page-detail','home-total','btn-start',
+     'home-role','home-title',
      'q-cur','q-total','q-type','q-stem','q-options','q-meta','progress-bar','foot-dots',
      'btn-prev','btn-next','btn-submit-top','res-score','res-remark','res-stats','res-grid',
      'res-detail','detail-list','btn-show-all','btn-restart','btn-back-result',
@@ -170,16 +170,15 @@
     else remark = '📖 别灰心，仔细阅读解析后会进步';
     el['res-remark'].textContent = remark;
 
-    var maxS = CONFIG.quota.single * CONFIG.score.single;
-    var maxM = CONFIG.quota.multi * CONFIG.score.multi;
-    var maxJ = CONFIG.quota.judge * CONFIG.score.judge;
+    // 分母固定为配额：单选20 / 多选20 / 判断10
+    var q = CONFIG.quota;
     setHTML('res-stats',
       '<div class="res-stat">答对<b>' + r.correct + '</b></div>' +
       '<div class="res-stat">答错<b>' + r.wrong + '</b></div>' +
       '<div class="res-stat">未答<b>' + r.unanswered + '</b></div>' +
-      '<div class="res-stat">单选<b>' + r.byType.single[0] + '/' + maxS + '</b></div>' +
-      '<div class="res-stat">多选<b>' + r.byType.multi[0] + '/' + maxM + '</b></div>' +
-      '<div class="res-stat">判断<b>' + r.byType.judge[0] + '/' + maxJ + '</b></div>');
+      '<div class="res-stat">单选<b>' + r.byType.single[0] + '/' + q.single + '</b></div>' +
+      '<div class="res-stat">多选<b>' + r.byType.multi[0] + '/' + q.multi + '</b></div>' +
+      '<div class="res-stat">判断<b>' + r.byType.judge[0] + '/' + q.judge + '</b></div>');
 
     var g = '';
     r.details.forEach(function (d) {
@@ -204,8 +203,6 @@
       '<div class="dc-stem">' + esc(d.q.question) + '</div>' +
       '<div class="dc-opts">' + optRowsHtml(d.q, d.picked, d.right) + '</div>' +
       '<div class="dc-meta">我的答案：' + mineText + '　|　正确答案：' + d.right.join('、') + '</div>' +
-      '<div class="dc-analysis"><div class="dc-analysis-title">📖 解析</div>' +
-        esc(d.q.analysis || '暂无解析') + '</div>' +
     '</div>';
   }
 
@@ -229,8 +226,7 @@
           ' · ' + (d.unanswered ? '未作答' : (d.ok ? '✅ 正确' : '❌ 错误')) + '</div>' +
         '<div class="dd-stem">' + esc(d.q.question) + '</div>' +
         '<div class="dc-opts">' + optRowsHtml(d.q, d.picked, d.right) + '</div>' +
-        '<div class="dc-analysis"><div class="dc-analysis-title">📖 解析</div>' +
-          esc(d.q.analysis || '暂无解析') + '</div>' +
+        '<div class="dc-meta">正确答案：' + d.right.join('、') + '</div>' +
       '</div>';
     });
     setHTML('detail-list', html);
@@ -238,28 +234,36 @@
   }
 
   /* ---------------- 持久化 / 统计 ---------------- */
+  /** 存储键按角色隔离，店员和店长互不干扰 */
+  function stateKey() { return CONFIG.storageKey + '_' + S.role.key; }
+  function statsKey() { return CONFIG.statsKey + '_' + S.role.key; }
+
   function recordStats(r) {
     try {
-      var arr = JSON.parse(localStorage.getItem(CONFIG.statsKey) || '[]');
-      arr.push({ t: Date.now(), score: r.total, correct: r.correct, total: S.paper.length });
+      var arr = JSON.parse(localStorage.getItem(statsKey()) || '[]');
+      arr.push({
+        t: Date.now(), role: S.role.key, score: r.total,
+        correct: r.correct, total: S.paper.length
+      });
       if (arr.length > 500) arr = arr.slice(-500);
-      localStorage.setItem(CONFIG.statsKey, JSON.stringify(arr));
+      localStorage.setItem(statsKey(), JSON.stringify(arr));
     } catch (e) {}
   }
   function saveState() {
     try {
-      localStorage.setItem(CONFIG.storageKey, JSON.stringify({
-        t: Date.now(), paper: S.paper, answers: S.answers, idx: S.idx,
+      localStorage.setItem(stateKey(), JSON.stringify({
+        t: Date.now(), role: S.role.key,
+        paper: S.paper, answers: S.answers, idx: S.idx,
         submitted: !!S.result
       }));
     } catch (e) {}
   }
   function loadState() {
-    try { return JSON.parse(localStorage.getItem(CONFIG.storageKey) || 'null'); }
+    try { return JSON.parse(localStorage.getItem(stateKey()) || 'null'); }
     catch (e) { return null; }
   }
   function clearState() {
-    try { localStorage.removeItem(CONFIG.storageKey); } catch (e) {}
+    try { localStorage.removeItem(stateKey()); } catch (e) {}
   }
 
   /* ---------------- 提交流程 ---------------- */
@@ -332,10 +336,20 @@
   function start() {
     cacheDom();
     bindEvents();
+
+    // 解析角色（?role=staff / ?role=manager），决定加载哪套题库
+    S.role = C.parseRole();
     el['home-total'].textContent =
       CONFIG.quota.single + CONFIG.quota.multi + CONFIG.quota.judge;
+    var roleTag = el['home-role'];
+    if (roleTag) {
+      roleTag.textContent = S.role.label;
+      roleTag.className = 'home-role role-' + S.role.key;
+    }
+    var titleEl = el['home-title'];
+    if (titleEl) titleEl.textContent = S.role.label + '知识竞赛答题';
 
-    fetch(C.assetUrl(CONFIG.bankUrl) + '?t=' + Date.now())
+    fetch(C.assetUrl(S.role.bankUrl) + '?t=' + Date.now())
       .then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
@@ -354,6 +368,8 @@
         }
 
         var st = loadState();
+        // 恢复的进度必须属于同一角色，避免串卷
+        if (st && st.role && st.role !== S.role.key) st = null;
         if (st && st.paper && st.paper.length && !st.submitted) {
           S.paper = st.paper; S.answers = st.answers || {}; S.idx = st.idx || 0;
           renderQuestion(); showPage('page-quiz');
@@ -371,7 +387,7 @@
         setHTML('q-stem',
           '<div style="color:#ef4444;font-size:15px;line-height:1.8">题库加载失败：' +
           esc(err.message) + '<br/><br/>' +
-          '请确认 <code>data/questions.sample.json</code> 存在，' +
+          '请确认 <code>' + esc(S.role.bankUrl) + '</code> 存在，' +
           '且是通过 HTTP 服务打开本页（不要直接双击 html 文件）。</div>');
         showPage('page-quiz');
       });
