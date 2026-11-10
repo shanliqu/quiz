@@ -46,8 +46,19 @@ def is_cgnat(ip):
     return bool(re.match(r"^100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\.", ip or ""))
 
 
+def is_fake_ip(ip):
+    """代理软件的 fake-ip 段：只存在于本机虚拟网卡，手机路由不到
+    198.18.0.0/15 是 Clash 默认 fake-ip 段；28.0.0.0/8 是 sing-box 等"""
+    if not ip:
+        return False
+    return bool(re.match(r"^198\.(1[89]|2[0-9]|3[01])\.", ip) or re.match(r"^28\.", ip))
+
+
 def is_virtual(name):
     n = (name or "").lower()
+    # "Unknown adapter xxx" 是 Windows 对第三方/虚拟驱动的默认命名
+    if n.startswith("unknown adapter"):
+        return True
     return any(k in n for k in VIRTUAL_KEYWORDS)
 
 
@@ -85,7 +96,10 @@ def parse_ipconfig():
         if not line:
             continue
         head = re.match(r"^(.+?):\s*$", line)
-        if head and not skip_prefix.match(head.group(1)):
+        # 必须含 "适配器"/"adapter" 才算标题，避免把
+        # "连接特定的 DNS 后缀  . :" 这类行误判成网卡名
+        if (head and re.search(r"适配器|adapter", head.group(1), re.I)
+                and not skip_prefix.match(head.group(1))):
             flush()
             name = re.sub(r"\badapter$", "", head.group(1), flags=re.I)
             name = re.sub(r"适配器$", "", name).strip()
@@ -107,6 +121,9 @@ def score_iface(iface):
     score = 0
     if is_virtual(iface["name"]):
         return -100
+    # fake-ip 段：只存在于本机虚拟网卡，手机路由不到
+    if is_fake_ip(iface.get("address")) or is_fake_ip(iface.get("gateway")):
+        return -100
     gw = iface.get("gateway") or ""
     if not gw or gw == "0.0.0.0":
         return -50
@@ -118,10 +135,12 @@ def score_iface(iface):
         score += 18
     elif re.match(r"^172\.(1[6-9]|2\d|3[01])\.", ip):
         score += 16
+    # CGNAT 段 100.64-127：常见于企业网络/运营商 NAT。
+    # 这类地址在同网段内是可达的，但不属于家庭/办公常见段，优先级降低。
     if is_cgnat(ip):
-        score -= 60
+        score -= 25
     if is_cgnat(gw):
-        score -= 40
+        score -= 15
     if re.search(r"wi-?fi|wireless|wlan|无线|802\.11", iface["name"], re.I):
         score += 10
     if re.search(r"ethernet|以太网|eth", iface["name"], re.I):

@@ -45,6 +45,7 @@
 
 <script src="assets/core.js"></script>
 <script src="assets/vendor/qrcode.js"></script>
+<script src="assets/vendor/qrcode-render.js"></script>
 <script>
 (function(){
   var C = window.QuizCore;
@@ -89,10 +90,9 @@
     badge(document.getElementById('c-url'), true, url);
     document.getElementById('qurl').textContent = url;
     document.getElementById('openbtn').href = url;
-    new QRCode(document.getElementById('qr'), {
-      text: url, width: 260, height: 260,
-      colorDark: '#0f172a', colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.M
+    QRCodeRender.toCanvas(document.getElementById('qr'), url, {
+      width: 260, margin: 2, correctLevel: 'M',
+      dark: '#0f172a', light: '#ffffff'
     });
   }
 

@@ -37,20 +37,25 @@
 </div>
 
 <script src="assets/vendor/qrcode.js"></script>
+<script src="assets/vendor/qrcode-render.js"></script>
 <script>
 (function(){
   var canvas = document.getElementById('cast-qr-canvas');
 
   function draw(text){
     try{
-      new QRCode(canvas, {
-        text: text, width: 360, height: 360,
-        colorDark: '#0f172a', colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.M
+      QRCodeRender.toCanvas(canvas, text, {
+        width: 360, margin: 2, correctLevel: 'M',
+        dark: '#0f172a', light: '#ffffff'
       });
     }catch(e){
-      var ctx = canvas.getContext('2d');
-      if(ctx){ ctx.fillStyle='#ef4444'; ctx.font='16px sans-serif'; ctx.fillText('二维码生成失败', 110, 180); }
+      console.error('二维码生成失败', e);
+      var ctx = canvas.getContext && canvas.getContext('2d');
+      if(ctx){
+        ctx.fillStyle='#ef4444';
+        ctx.font='16px sans-serif';
+        ctx.fillText('二维码生成失败: ' + e.message, 20, 180);
+      }
     }
   }
 
@@ -100,7 +105,10 @@
             '手机需与本机连接同一个 WiFi · 来自网卡: ' + (info.iface||'');
           return info.url;
         }
-        // 本地服务但没有可用网卡 -> 退回静态托管地址
+        // 本地服务但没有可用网卡 -> 明确警告，并退回静态托管地址
+        showWarn('未检测到手机可访问的局域网地址',
+          '本地服务已启动，但没有找到手机能连上的真实网卡。<br/>' +
+          '常见原因：电脑没连 WiFi/网线，或网卡地址属于代理/VPN 虚拟网卡。');
         var base = location.origin + baseDir();
         document.getElementById('cast-tip').textContent =
           '本地无可用网卡，当前显示的是静态托管地址（需手机能访问互联网）';

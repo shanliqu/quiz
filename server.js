@@ -43,8 +43,20 @@ function isCGNAT(ip) {
   return /^100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\./.test(ip);
 }
 
+/**
+ * 代理软件的 fake-ip 段：这些地址只存在于本机的虚拟网卡上，
+ * 手机在局域网里根本路由不到，扫了也连不上。
+ *   198.18.0.0/15  Clash 默认 fake-ip 段
+ *   28.0.0.0/8     sing-box / 部分 Clash 配置
+ */
+function isFakeIP(ip) {
+  return /^198\.(1[89]|2[0-9]|3[01])\./.test(ip) || /^28\./.test(ip);
+}
+
 function isVirtual(name) {
   const n = (name || '').toLowerCase();
+  // "Unknown adapter xxx" 是 Windows 对第三方/虚拟驱动的默认命名
+  if (n.startsWith('unknown adapter')) return true;
   return VIRTUAL_KEYWORDS.some(k => n.includes(k));
 }
 
@@ -83,8 +95,11 @@ function parseIpconfig() {
     if (!line) continue;
 
     // 网卡标题行: "Ethernet adapter 以太网:" / "无线局域网适配器 WLAN:"
+    // 必须含 "适配器"/"adapter" 才算标题，避免把
+    // "连接特定的 DNS 后缀  . :" 这类行误判成网卡名
     const head = line.match(/^(.+?):\s*$/);
-    if (head && !/^(IPv4|IPv6|Link-local|DHCP|Default Gateway|Subnet Mask|Connection-specific|默认网关|子网掩码|媒体状态|Media State)/i.test(head[1])) {
+    if (head && /适配器|adapter/i.test(head[1]) &&
+        !/^(IPv4|IPv6|Link-local|DHCP|Default Gateway|Subnet Mask|Connection-specific|默认网关|子网掩码|媒体状态|Media State)/i.test(head[1])) {
       flush();
       name = head[1].replace(/\badapter$/i, '').replace(/适配器$/, '').trim();
       continue;
@@ -111,6 +126,9 @@ function scoreIFace(iface) {
   // 虚拟网卡直接排除
   if (isVirtual(iface.name)) return -100;
 
+  // fake-ip 段：只存在于本机虚拟网卡，手机路由不到，直接排除
+  if (isFakeIP(iface.address) || isFakeIP(iface.gateway)) return -100;
+
   // 没有默认网关 = 独立网段（VMware/VirtualBox/WSL），手机连不到
   if (!iface.gateway || iface.gateway === '0.0.0.0') return -50;
 
@@ -122,11 +140,11 @@ function scoreIFace(iface) {
   else if (iface.address.startsWith('10.')) score += 18;
   else if (/^172\.(1[6-9]|2\d|3[01])\./.test(iface.address)) score += 16;
 
-  // CGNAT 段扣分：代理软件(TUN/Clash)的虚拟网卡会落在 100.64-127，
-  // 这类地址在局域网内手机根本路由不到
-  if (isCGNAT(iface.address)) score -= 60;
-  // 网关也是 CGNAT 段 => 典型的代理 TUN 网卡
-  if (isCGNAT(iface.gateway)) score -= 40;
+  // CGNAT 段 100.64-127：常见于企业网络/运营商 NAT。
+  // 这类地址在同网段内是可达的，但不属于家庭/办公常见段，优先级降低。
+  if (isCGNAT(iface.address)) score -= 25;
+  // 网关也是 CGNAT 段 => 企业 VPN 网络（如深信服 aTrust）
+  if (isCGNAT(iface.gateway)) score -= 15;
 
   // 无线网卡加分（现场活动最常用）
   if (/wi-?fi|wireless|wlan|无线|802\.11/i.test(iface.name)) score += 10;

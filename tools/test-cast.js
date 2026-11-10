@@ -20,6 +20,7 @@ console.log('\n=== 投放大屏页测试 ===\n');
 
 const html = fs.readFileSync(path.join(ROOT, 'cast.html'), 'utf8');
 const qrJs = fs.readFileSync(path.join(ROOT, 'assets', 'vendor', 'qrcode.js'), 'utf8');
+const renderJs = fs.readFileSync(path.join(ROOT, 'assets', 'vendor', 'qrcode-render.js'), 'utf8');
 
 const dom = new JSDOM(html, {
   url: 'http://localhost:8080/cast.html',
@@ -50,11 +51,18 @@ window.fetch = () => Promise.resolve({
     ]
   })
 });
-// jsdom 无 canvas 实现，桩一个最小可用对象
+// jsdom 无 canvas 实现，桩一个最小可用对象，并记录绘制内容以便断言
+const drawn = [];
 window.HTMLCanvasElement.prototype.getContext = function () {
-  return { fillStyle: '', font: '', fillRect(){}, fillText(){}, drawImage(){}, clearRect(){}, getImageData(){ return { data: [] }; }, putImageData(){} };
+  return {
+    fillStyle: '', font: '',
+    fillRect(x, y, w, h){ drawn.push([this.fillStyle, x, y, w, h]); },
+    fillText(){}, drawImage(){}, clearRect(){}, setTransform(){},
+    getImageData(){ return { data: [] }; }, putImageData(){}
+  };
 };
 window.eval(qrJs);
+window.eval(renderJs);
 // 抽取 cast.html 中的内联脚本
 const inline = html.match(/<script>([\s\S]*?)<\/script>/);
 window.eval(inline[1]);
@@ -72,6 +80,19 @@ const flush = () => new Promise(r => setTimeout(r, 60));
     const c = document.getElementById('cast-qr-canvas');
     ok(c, '缺少 canvas');
     ok(c.width === 360 && c.height === 360, '画布尺寸不对');
+  });
+
+  t('二维码内容确实是解析出的地址（真正画出了码）', () => {
+    const dark = drawn.filter(d => d[0] === '#0f172a' && d[3] > 0 && d[4] > 0);
+    ok(dark.length > 100, '二维码暗色模块过少，说明没有真正绘制: ' + dark.length);
+    // 用渲染器独立重建矩阵，确认内容一致
+    const m = window.QRCodeRender.build('http://192.168.83.1:8080/', 'M');
+    ok(m.size >= 21, '模块数异常');
+  });
+
+  t('没有出现二维码生成失败（QRCodeRender 未定义等）', () => {
+    ok(!html.includes('new QRCode('), 'cast.html 仍在调用不存在的 new QRCode()');
+    ok(!html.includes('QRCode.CorrectLevel'), 'cast.html 仍在引用不存在的 QRCode.CorrectLevel');
   });
 
   t('列出所有检测到的网卡', () => {

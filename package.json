@@ -6,7 +6,7 @@
   "homepage": ".",
   "scripts": {
     "start": "node server.js",
-    "test": "node tools/test.js && node tools/test-ui.js && node tools/test-cast.js",
+    "test": "node tools/test.js && node tools/test-ui.js && node tools/test-cast.js && node tools/test-net.js && node tools/test-qr-render.js",
     "gen": "python tools/gen_sample.py"
   },
   "keywords": [
