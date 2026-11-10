@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>扫码答题 · 自检</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  body{background:#f1f5f9;padding:20px;}
+  .wrap{max-width:640px;margin:0 auto;}
+  .card{background:#fff;border-radius:14px;padding:18px;margin-bottom:14px;}
+  .card h2{margin:0 0 12px;font-size:16px;}
+  .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #e2e8f0;font-size:14px;}
+  .row:last-child{border-bottom:none;}
+  .row b{font-weight:600;}
+  .pass{color:#15803d;background:#dcfce7;padding:2px 9px;border-radius:10px;font-size:12.5px;}
+  .fail{color:#b91c1c;background:#fee2e2;padding:2px 9px;border-radius:10px;font-size:12.5px;}
+  .btn{display:block;width:100%;padding:13px;margin-top:10px;border:none;border-radius:10px;
+    background:#1e88e5;color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;}
+  .hint{font-size:13px;color:#64748b;line-height:1.8;}
+  code{background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:12.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h2>服务自检</h2>
+    <div class="row"><span>题库加载</span><b id="c-bank">检查中…</b></div>
+    <div class="row"><span>题量是否够抽</span><b id="c-quota">检查中…</b></div>
+    <div class="row"><span>答案是否越界</span><b id="c-range">检查中…</b></div>
+    <div class="row"><span>局域网地址</span><b id="c-ip">检查中…</b></div>
+    <div class="row"><span>二维码地址</span><b id="c-url">检查中…</b></div>
+  </div>
+
+  <div class="card">
+    <h2>手机访问测试</h2>
+    <p class="hint">用手机微信「扫一扫」扫下面这个二维码，如果能打开答题首页，说明链路完全打通。</p>
+    <div style="text-align:center;padding:14px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;">
+      <canvas id="qr" width="260" height="260" style="width:260px;height:260px;"></canvas>
+    </div>
+    <p class="hint" id="qurl" style="text-align:center;word-break:break-all;"></p>
+    <a class="btn" id="openbtn" href="index.html">打开答题首页（在新标签）</a>
+  </div>
+</div>
+
+<script src="assets/core.js"></script>
+<script src="assets/vendor/qrcode.js"></script>
+<script>
+(function(){
+  var C = window.QuizCore;
+  var QUOTA = { single: 20, multi: 20, judge: 10 };
+
+  function badge(el, ok, text){
+    el.className = ok ? 'pass' : 'fail';
+    el.textContent = text;
+  }
+
+  // 题库检查
+  fetch(C.assetUrl('data/questions.sample.json') + '?t=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(bank){
+      badge(document.getElementById('c-bank'), Array.isArray(bank) && bank.length > 0,
+            (bank.length || 0) + ' 道题');
+      var chk = C.checkBank(bank, QUOTA);
+      badge(document.getElementById('c-quota'), chk.ok,
+            chk.ok ? '充足 (20/20/10)' : chk.problems[0]);
+      var bad = C.checkAnswersInRange(bank);
+      badge(document.getElementById('c-range'), bad.length === 0,
+            bad.length === 0 ? '全部正常' : bad.length + ' 处越界');
+    })
+    .catch(function(e){
+      badge(document.getElementById('c-bank'), false, '加载失败: ' + e.message);
+      badge(document.getElementById('c-quota'), false, '未知');
+      badge(document.getElementById('c-range'), false, '未知');
+    });
+
+  // 地址检查
+  // 地址检查：优先本地服务，其次静态托管（GitHub Pages 等）
+  function baseDir(){
+    var p = (location.pathname || '/');
+    if(p.charAt(0) !== '/') p = '/' + p;
+    var last = p.slice(p.lastIndexOf('/') + 1);
+    if(last && last.indexOf('.') === -1) return p.replace(/[^/]*$/, '') + last + '/';
+    return p.replace(/[^/]*$/, '');
+  }
+
+  function showUrl(url, ipText, ipOk){
+    badge(document.getElementById('c-ip'), ipOk, ipText);
+    badge(document.getElementById('c-url'), true, url);
+    document.getElementById('qurl').textContent = url;
+    document.getElementById('openbtn').href = url;
+    new QRCode(document.getElementById('qr'), {
+      text: url, width: 260, height: 260,
+      colorDark: '#0f172a', colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  }
+
+  fetch('/api/info?t=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(info){
+      if(info.url){
+        showUrl(info.url,
+          (info.ip || '已指定') + (info.iface ? ' (' + info.iface + ')' : ''), true);
+      } else {
+        showUrl(location.origin + baseDir(), '静态托管模式（本地无可用网卡）', false);
+      }
+    })
+    .catch(function(){
+      showUrl(location.origin + baseDir(), '静态托管模式', false);
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+/* Vercel 部署配置：静态站点，零构建 */
+const routes = [
+  { src: '/', headers: { 'Cache-Control': 'no-cache' } },
+  { src: '/data/(.*)', headers: { 'Cache-Control': 'no-store' } }
+];
+
+module.exports = { routes };

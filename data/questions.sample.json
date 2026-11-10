@@ -1,0 +1,1247 @@
+[
+  {
+    "id": "q_0001",
+    "type": "single",
+    "question": "9 × 7 + 6 = ?",
+    "options": [
+      68,
+      57,
+      69,
+      117
+    ],
+    "answer": "C",
+    "analysis": "9 × 7 + 6 = 63 + 6 = 69。混合运算先乘除后加减。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0002",
+    "type": "single",
+    "question": "40 ÷ 8 = ?",
+    "options": [
+      8,
+      6,
+      3,
+      5
+    ],
+    "answer": "D",
+    "analysis": "40 ÷ 8 = 5。想成 40 里面有几个 8，再乘回去验证：8 × 5 = 40。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0003",
+    "type": "single",
+    "question": "18 + 6 = ?",
+    "options": [
+      21,
+      27,
+      24,
+      23
+    ],
+    "answer": "C",
+    "analysis": "18 + 6 = 24。加法运算把两个数合并成一个和，先算 18 + 6。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0004",
+    "type": "single",
+    "question": "49 - 32 = ?",
+    "options": [
+      18,
+      19,
+      17,
+      20
+    ],
+    "answer": "C",
+    "analysis": "49 - 32 = 17。减法是从被减数里去掉减数，可用加法验算：17 + 32 = 49。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0005",
+    "type": "single",
+    "question": "7 × 4 = ?",
+    "options": [
+      28,
+      29,
+      35,
+      24
+    ],
+    "answer": "A",
+    "analysis": "7 × 4 = 28。乘法表示 7 个 4 相加，可用 4 × 7 = 28 反向验证。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0006",
+    "type": "single",
+    "question": "2 × 7 + 1 = ?",
+    "options": [
+      13,
+      16,
+      15,
+      14
+    ],
+    "answer": "C",
+    "analysis": "2 × 7 + 1 = 14 + 1 = 15。混合运算先乘除后加减。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0007",
+    "type": "single",
+    "question": "45 ÷ 5 = ?",
+    "options": [
+      12,
+      8,
+      9,
+      11
+    ],
+    "answer": "C",
+    "analysis": "45 ÷ 5 = 9。想成 45 里面有几个 5，再乘回去验证：5 × 9 = 45。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0008",
+    "type": "single",
+    "question": "35 + 24 = ?",
+    "options": [
+      60,
+      61,
+      58,
+      59
+    ],
+    "answer": "D",
+    "analysis": "35 + 24 = 59。加法运算把两个数合并成一个和，先算 35 + 24。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0009",
+    "type": "single",
+    "question": "9 - 3 = ?",
+    "options": [
+      8,
+      6,
+      7,
+      4
+    ],
+    "answer": "B",
+    "analysis": "9 - 3 = 6。减法是从被减数里去掉减数，可用加法验算：6 + 3 = 9。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0010",
+    "type": "single",
+    "question": "53 - 16 = ?",
+    "options": [
+      39,
+      40,
+      37,
+      35
+    ],
+    "answer": "C",
+    "analysis": "53 - 16 = 37。减法是从被减数里去掉减数，可用加法验算：37 + 16 = 53。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0011",
+    "type": "single",
+    "question": "8 × 5 + 4 = ?",
+    "options": [
+      48,
+      44,
+      72,
+      45
+    ],
+    "answer": "B",
+    "analysis": "8 × 5 + 4 = 40 + 4 = 44。混合运算先乘除后加减。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0012",
+    "type": "single",
+    "question": "3 × 9 + 4 = ?",
+    "options": [
+      31,
+      30,
+      32,
+      39
+    ],
+    "answer": "A",
+    "analysis": "3 × 9 + 4 = 27 + 4 = 31。混合运算先乘除后加减。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0013",
+    "type": "single",
+    "question": "7 × 3 + 6 = ?",
+    "options": [
+      27,
+      15,
+      33,
+      63
+    ],
+    "answer": "A",
+    "analysis": "7 × 3 + 6 = 21 + 6 = 27。混合运算先乘除后加减。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0014",
+    "type": "single",
+    "question": "3 × 5 + 9 = ?",
+    "options": [
+      33,
+      42,
+      25,
+      24
+    ],
+    "answer": "D",
+    "analysis": "3 × 5 + 9 = 15 + 9 = 24。混合运算先乘除后加减。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0015",
+    "type": "single",
+    "question": "6 × 5 = ?",
+    "options": [
+      30,
+      25,
+      31,
+      40
+    ],
+    "answer": "A",
+    "analysis": "6 × 5 = 30。乘法表示 6 个 5 相加，可用 5 × 6 = 30 反向验证。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0016",
+    "type": "single",
+    "question": "9 × 3 = ?",
+    "options": [
+      27,
+      24,
+      36,
+      26
+    ],
+    "answer": "A",
+    "analysis": "9 × 3 = 27。乘法表示 9 个 3 相加，可用 3 × 9 = 27 反向验证。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0017",
+    "type": "single",
+    "question": "55 - 27 = ?",
+    "options": [
+      29,
+      27,
+      31,
+      28
+    ],
+    "answer": "D",
+    "analysis": "55 - 27 = 28。减法是从被减数里去掉减数，可用加法验算：28 + 27 = 55。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0018",
+    "type": "single",
+    "question": "4 × 8 = ?",
+    "options": [
+      31,
+      33,
+      48,
+      32
+    ],
+    "answer": "D",
+    "analysis": "4 × 8 = 32。乘法表示 4 个 8 相加，可用 8 × 4 = 32 反向验证。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0019",
+    "type": "single",
+    "question": "27 + 19 = ?",
+    "options": [
+      43,
+      45,
+      46,
+      48
+    ],
+    "answer": "C",
+    "analysis": "27 + 19 = 46。加法运算把两个数合并成一个和，先算 27 + 19。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0020",
+    "type": "single",
+    "question": "20 + 16 = ?",
+    "options": [
+      38,
+      37,
+      36,
+      33
+    ],
+    "answer": "C",
+    "analysis": "20 + 16 = 36。加法运算把两个数合并成一个和，先算 20 + 16。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0021",
+    "type": "single",
+    "question": "72 ÷ 9 = ?",
+    "options": [
+      11,
+      6,
+      7,
+      8
+    ],
+    "answer": "D",
+    "analysis": "72 ÷ 9 = 8。想成 72 里面有几个 9，再乘回去验证：9 × 8 = 72。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0022",
+    "type": "single",
+    "question": "32 ÷ 4 = ?",
+    "options": [
+      9,
+      6,
+      10,
+      8
+    ],
+    "answer": "D",
+    "analysis": "32 ÷ 4 = 8。想成 32 里面有几个 4，再乘回去验证：4 × 8 = 32。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0023",
+    "type": "single",
+    "question": "23 + 5 = ?",
+    "options": [
+      28,
+      29,
+      31,
+      25
+    ],
+    "answer": "A",
+    "analysis": "23 + 5 = 28。加法运算把两个数合并成一个和，先算 23 + 5。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0024",
+    "type": "single",
+    "question": "9 × 2 = ?",
+    "options": [
+      19,
+      18,
+      22,
+      27
+    ],
+    "answer": "B",
+    "analysis": "9 × 2 = 18。乘法表示 9 个 2 相加，可用 2 × 9 = 18 反向验证。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0025",
+    "type": "single",
+    "question": "9 × 4 = ?",
+    "options": [
+      32,
+      36,
+      44,
+      45
+    ],
+    "answer": "B",
+    "analysis": "9 × 4 = 36。乘法表示 9 个 4 相加，可用 4 × 9 = 36 反向验证。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0026",
+    "type": "single",
+    "question": "54 ÷ 6 = ?",
+    "options": [
+      11,
+      12,
+      10,
+      9
+    ],
+    "answer": "D",
+    "analysis": "54 ÷ 6 = 9。想成 54 里面有几个 6，再乘回去验证：6 × 9 = 54。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0027",
+    "type": "single",
+    "question": "17 - 6 = ?",
+    "options": [
+      10,
+      12,
+      14,
+      11
+    ],
+    "answer": "D",
+    "analysis": "17 - 6 = 11。减法是从被减数里去掉减数，可用加法验算：11 + 6 = 17。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0028",
+    "type": "single",
+    "question": "23 + 34 = ?",
+    "options": [
+      56,
+      57,
+      59,
+      54
+    ],
+    "answer": "B",
+    "analysis": "23 + 34 = 57。加法运算把两个数合并成一个和，先算 23 + 34。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0029",
+    "type": "single",
+    "question": "58 - 25 = ?",
+    "options": [
+      34,
+      32,
+      33,
+      31
+    ],
+    "answer": "C",
+    "analysis": "58 - 25 = 33。减法是从被减数里去掉减数，可用加法验算：33 + 25 = 58。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0030",
+    "type": "single",
+    "question": "16 ÷ 4 = ?",
+    "options": [
+      3,
+      6,
+      4,
+      5
+    ],
+    "answer": "C",
+    "analysis": "16 ÷ 4 = 4。想成 16 里面有几个 4，再乘回去验证：4 × 4 = 16。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0031",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "5 + 4 = 19",
+      "5 × 4 = 21",
+      "5 + 4 = 20",
+      "5 × 4 = 20"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "analysis": "正确答案的共同结果是 20。5 × 4 = 20，5 + 4 = 20，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0032",
+    "type": "multi",
+    "question": "下列算式中，结果等于 26 的有哪些？",
+    "options": [
+      "3 + 4 = 9",
+      "3 + 8 = 12",
+      "13 + 13 = 26",
+      "4 + 3 = 8"
+    ],
+    "answer": [
+      "C"
+    ],
+    "analysis": "逐项验算：只有结果等于 26 的式子正确。等式的意义是两边数值相等。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0033",
+    "type": "multi",
+    "question": "下列算式中，结果等于 6 的有哪些？",
+    "options": [
+      "3 × 3 = 6",
+      "3 + 3 = 6",
+      "3 × 3 = 7",
+      "3 + 4 = 6"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "analysis": "正确结果为 6。乘法的交换律和加法的意义说明 3 个 3 相加等于 6。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0034",
+    "type": "multi",
+    "question": "下列算式中，结果等于 22 的有哪些？",
+    "options": [
+      "5 + 7 = 13",
+      "3 + 5 = 7",
+      "11 + 11 = 22",
+      "8 + 6 = 16"
+    ],
+    "answer": [
+      "C"
+    ],
+    "analysis": "逐项验算：只有结果等于 22 的式子正确。等式的意义是两边数值相等。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0035",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "9 × 9 = 82",
+      "9 + 9 = 80",
+      "9 + 9 = 81",
+      "9 × 9 = 81"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "analysis": "正确答案的共同结果是 81。9 × 9 = 81，9 + 9 = 81，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0036",
+    "type": "multi",
+    "question": "下列算式中，结果等于 40 的有哪些？",
+    "options": [
+      "4 + 9 = 15",
+      "20 + 20 = 40",
+      "4 + 3 = 9",
+      "9 + 7 = 17"
+    ],
+    "answer": [
+      "B"
+    ],
+    "analysis": "逐项验算：只有结果等于 40 的式子正确。等式的意义是两边数值相等。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0037",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "6 × 6 = 12",
+      "6 + 7 = 12",
+      "6 + 6 = 12",
+      "6 × 6 = 13"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "analysis": "正确结果为 12。乘法的交换律和加法的意义说明 6 个 6 相加等于 12。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0038",
+    "type": "multi",
+    "question": "下列算式中，结果等于 26 的有哪些？",
+    "options": [
+      "3 + 5 = 7",
+      "13 + 13 = 26",
+      "7 + 2 = 11",
+      "7 + 7 = 16"
+    ],
+    "answer": [
+      "B"
+    ],
+    "analysis": "逐项验算：只有结果等于 26 的式子正确。等式的意义是两边数值相等。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0039",
+    "type": "multi",
+    "question": "下列算式中，结果等于 8 的有哪些？",
+    "options": [
+      "4 + 4 = 8",
+      "4 + 5 = 8",
+      "4 × 4 = 8",
+      "4 × 4 = 9"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "analysis": "正确结果为 8。乘法的交换律和加法的意义说明 4 个 4 相加等于 8。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0040",
+    "type": "multi",
+    "question": "下列算式中，结果等于 40 的有哪些？",
+    "options": [
+      "5 + 9 = 15",
+      "2 + 6 = 10",
+      "6 + 9 = 16",
+      "20 + 20 = 40"
+    ],
+    "answer": [
+      "D"
+    ],
+    "analysis": "逐项验算：只有结果等于 40 的式子正确。等式的意义是两边数值相等。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0041",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "6 + 6 = 12",
+      "6 × 6 = 12",
+      "6 + 7 = 12",
+      "6 × 6 = 13"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "analysis": "正确结果为 12。乘法的交换律和加法的意义说明 6 个 6 相加等于 12。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0042",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "3 × 9 = 27",
+      "3 + 9 = 26",
+      "3 + 9 = 27",
+      "3 × 9 = 28"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "analysis": "正确答案的共同结果是 27。3 × 9 = 27，3 + 9 = 27，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0043",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "6 + 7 = 12",
+      "6 × 6 = 13",
+      "6 × 6 = 12",
+      "6 + 6 = 12"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "analysis": "正确结果为 12。乘法的交换律和加法的意义说明 6 个 6 相加等于 12。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0044",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "4 × 4 = 16",
+      "4 × 4 = 17",
+      "4 + 4 = 15",
+      "4 + 4 = 16"
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "analysis": "正确答案的共同结果是 16。4 × 4 = 16，4 + 4 = 16，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0045",
+    "type": "multi",
+    "question": "下列算式中，结果等于 13 的有哪些？",
+    "options": [
+      "8 + 5 = 13",
+      "3 + 4 = 9",
+      "8 + 2 = 11",
+      "6 + 7 = 13"
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "analysis": "逐项验算：只有结果等于 13 的式子正确。等式的意义是两边数值相等。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0046",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "5 + 5 = 24",
+      "5 × 5 = 25",
+      "5 × 5 = 26",
+      "5 + 5 = 25"
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "analysis": "正确答案的共同结果是 25。5 × 5 = 25，5 + 5 = 25，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0047",
+    "type": "multi",
+    "question": "下列算式中，结果等于 10 的有哪些？",
+    "options": [
+      "5 + 6 = 10",
+      "5 + 5 = 10",
+      "5 × 5 = 11",
+      "5 × 5 = 10"
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "analysis": "正确结果为 10。乘法的交换律和加法的意义说明 5 个 5 相加等于 10。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0048",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "3 + 3 = 8",
+      "3 × 3 = 9",
+      "3 + 3 = 9",
+      "3 × 3 = 10"
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "analysis": "正确答案的共同结果是 9。3 × 3 = 9，3 + 3 = 9，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0049",
+    "type": "multi",
+    "question": "下列算式中，结果等于 4 的有哪些？",
+    "options": [
+      "2 + 2 = 4",
+      "2 × 2 = 4",
+      "2 + 3 = 4",
+      "2 × 2 = 5"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "analysis": "正确结果为 4。乘法的交换律和加法的意义说明 2 个 2 相加等于 4。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0050",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "5 × 8 = 40",
+      "5 + 8 = 40",
+      "5 × 8 = 41",
+      "5 + 8 = 39"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "analysis": "正确答案的共同结果是 40。5 × 8 = 40，5 + 8 = 40，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0051",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "6 + 7 = 12",
+      "6 × 6 = 13",
+      "6 + 6 = 12",
+      "6 × 6 = 12"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "analysis": "正确结果为 12。乘法的交换律和加法的意义说明 6 个 6 相加等于 12。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0052",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "5 + 3 = 14",
+      "5 × 3 = 15",
+      "5 + 3 = 15",
+      "5 × 3 = 16"
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "analysis": "正确答案的共同结果是 15。5 × 3 = 15，5 + 3 = 15，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0053",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "6 × 4 = 25",
+      "6 × 4 = 24",
+      "6 + 4 = 24",
+      "6 + 4 = 23"
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "analysis": "正确答案的共同结果是 24。6 × 4 = 24，6 + 4 = 24，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0054",
+    "type": "multi",
+    "question": "下列算式中，结果等于 4 的有哪些？",
+    "options": [
+      "2 × 2 = 5",
+      "2 + 3 = 4",
+      "2 + 2 = 4",
+      "2 × 2 = 4"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "analysis": "正确结果为 4。乘法的交换律和加法的意义说明 2 个 2 相加等于 4。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0055",
+    "type": "multi",
+    "question": "下列算式中，结果等于 6 的有哪些？",
+    "options": [
+      "3 × 3 = 6",
+      "3 + 4 = 6",
+      "3 + 3 = 6",
+      "3 × 3 = 7"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "analysis": "正确结果为 6。乘法的交换律和加法的意义说明 3 个 3 相加等于 6。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0056",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "6 × 6 = 12",
+      "6 × 6 = 13",
+      "6 + 7 = 12",
+      "6 + 6 = 12"
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "analysis": "正确结果为 12。乘法的交换律和加法的意义说明 6 个 6 相加等于 12。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0057",
+    "type": "multi",
+    "question": "下列算式中，结果等于 12 的有哪些？",
+    "options": [
+      "6 + 6 = 12",
+      "6 + 7 = 12",
+      "6 × 6 = 12",
+      "6 × 6 = 13"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "analysis": "正确结果为 12。乘法的交换律和加法的意义说明 6 个 6 相加等于 12。",
+    "knowledge": "等式判断",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0058",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "3 + 3 = 8",
+      "3 × 3 = 9",
+      "3 + 3 = 9",
+      "3 × 3 = 10"
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "analysis": "正确答案的共同结果是 9。3 × 3 = 9，3 + 3 = 9，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0059",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "4 × 8 = 32",
+      "4 + 8 = 31",
+      "4 + 8 = 32",
+      "4 × 8 = 33"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "analysis": "正确答案的共同结果是 32。4 × 8 = 32，4 + 8 = 32，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0060",
+    "type": "multi",
+    "question": "下列算式中，计算结果正确的是哪些？",
+    "options": [
+      "4 + 8 = 32",
+      "4 × 8 = 32",
+      "4 + 8 = 31",
+      "4 × 8 = 33"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "analysis": "正确答案的共同结果是 32。4 × 8 = 32，4 + 8 = 32，其余选项结果不符。",
+    "knowledge": "四则运算",
+    "difficulty": 2
+  },
+  {
+    "id": "q_0061",
+    "type": "judge",
+    "question": "8 × 5 = 40",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 8 × 5 = 40，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0062",
+    "type": "judge",
+    "question": "4 + 16 = 20",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 4 + 16 = 20，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0063",
+    "type": "judge",
+    "question": "45 ÷ 9 = 6",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 45 ÷ 9 = 5，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0064",
+    "type": "judge",
+    "question": "5 × 2 = 10",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 5 × 2 = 10，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0065",
+    "type": "judge",
+    "question": "35 ÷ 5 = 7",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 35 ÷ 5 = 7，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0066",
+    "type": "judge",
+    "question": "9 + 12 = 21",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 9 + 12 = 21，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0067",
+    "type": "judge",
+    "question": "30 ÷ 6 = 6",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 30 ÷ 6 = 5，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0068",
+    "type": "judge",
+    "question": "16 - 14 = 1",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 16 - 14 = 2，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0069",
+    "type": "judge",
+    "question": "8 + 11 = 19",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 8 + 11 = 19，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0070",
+    "type": "judge",
+    "question": "10 - 10 = -1",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 10 - 10 = 0，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0071",
+    "type": "judge",
+    "question": "20 - 17 = 2",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 20 - 17 = 3，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0072",
+    "type": "judge",
+    "question": "13 - 6 = 7",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 13 - 6 = 7，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0073",
+    "type": "judge",
+    "question": "4 ÷ 2 = 2",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 4 ÷ 2 = 2，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0074",
+    "type": "judge",
+    "question": "20 ÷ 5 = 3",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 20 ÷ 5 = 4，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0075",
+    "type": "judge",
+    "question": "15 - 10 = 6",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 15 - 10 = 5，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0076",
+    "type": "judge",
+    "question": "14 ÷ 2 = 7",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 14 ÷ 2 = 7，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0077",
+    "type": "judge",
+    "question": "30 ÷ 6 = 4",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 30 ÷ 6 = 5，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0078",
+    "type": "judge",
+    "question": "12 ÷ 2 = 6",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 12 ÷ 2 = 6，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0079",
+    "type": "judge",
+    "question": "8 × 9 = 72",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "analysis": "正确结果是 8 × 9 = 72，题中断言的等式成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  },
+  {
+    "id": "q_0080",
+    "type": "judge",
+    "question": "36 ÷ 4 = 8",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "analysis": "正确结果是 36 ÷ 4 = 9，题中断言的等式不成立。",
+    "knowledge": "四则运算",
+    "difficulty": 1
+  }
+]

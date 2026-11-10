@@ -1,0 +1,25 @@
+{
+  "name": "wechat-scan-quiz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "扫码答题程序 - 微信扫码进入，随机50题自动判分",
+  "homepage": ".",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tools/test.js && node tools/test-ui.js && node tools/test-cast.js",
+    "gen": "python tools/gen_sample.py"
+  },
+  "keywords": [
+    "quiz",
+    "wechat",
+    "qrcode"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "qrcode-generator": "^1.4.4"
+  },
+  "devDependencies": {
+    "jsdom": "^26.0.0"
+  }
+}

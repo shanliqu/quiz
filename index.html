@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<meta name="theme-color" content="#1e88e5">
+<title>扫码答题</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="app">
+  <!-- 首页 -->
+  <section class="page" id="page-home">
+    <div class="home-card">
+      <div class="home-icon">📝</div>
+      <h1>知识竞赛答题</h1>
+      <p class="home-sub">共 <b id="home-total">50</b> 道题 · 单选 20 / 多选 20 / 判断 10</p>
+      <ul class="home-rules">
+        <li>⏱️ 无倒计时，请认真作答</li>
+        <li>🔒 答案提交后不可修改</li>
+        <li>📊 交卷后可查看得分与逐题解析</li>
+      </ul>
+      <button class="btn btn-primary btn-lg" id="btn-start">开始答题</button>
+      <p class="home-tip">微信内打开可能出现提示，选择「继续访问」即可</p>
+    </div>
+  </section>
+
+  <!-- 答题页 -->
+  <section class="page" id="page-quiz">
+    <header class="quiz-head">
+      <div class="qh-left">
+        <span class="qh-idx">第 <b id="q-cur">1</b>/<b id="q-total">50</b> 题</span>
+        <span class="qh-type" id="q-type">单选题</span>
+      </div>
+      <button class="qh-submit" id="btn-submit-top">交卷</button>
+    </header>
+    <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+
+    <div class="quiz-body">
+      <div class="q-stem" id="q-stem"></div>
+      <div class="q-options" id="q-options"></div>
+      <div class="q-meta" id="q-meta"></div>
+    </div>
+
+    <footer class="quiz-foot">
+      <button class="btn btn-ghost" id="btn-prev">上一题</button>
+      <div class="foot-dots" id="foot-dots"></div>
+      <button class="btn btn-primary" id="btn-next">下一题</button>
+    </footer>
+  </section>
+
+  <!-- 成绩页 -->
+  <section class="page" id="page-result">
+    <div class="res-head">
+      <div class="res-score" id="res-score">0</div>
+      <div class="res-label">总分</div>
+      <div class="res-remark" id="res-remark"></div>
+      <div class="res-stats" id="res-stats"></div>
+    </div>
+
+    <div class="res-nav">
+      <button class="btn btn-ghost btn-sm" id="btn-show-all">查看全体详解</button>
+      <button class="btn btn-ghost btn-sm" id="btn-restart">再答一次</button>
+    </div>
+
+    <div class="res-grid-wrap">
+      <div class="grid-title">题号总览 <span class="legend">
+        <i class="dot ok"></i>正确 <i class="dot bad"></i>错误 <i class="dot none"></i>未答
+      </span></div>
+      <div class="res-grid" id="res-grid"></div>
+    </div>
+
+    <div class="res-detail" id="res-detail"></div>
+  </section>
+
+  <!-- 全体详解页 -->
+  <section class="page" id="page-detail">
+    <header class="detail-head">
+      <button class="back-btn" id="btn-back-result">‹ 返回成绩</button>
+      <span>全体详解</span>
+    </header>
+    <div class="detail-list" id="detail-list"></div>
+  </section>
+</div>
+
+<!-- 自定义弹层（微信内不用 alert） -->
+<div class="modal-mask" id="modal-mask">
+  <div class="modal">
+    <div class="modal-title" id="modal-title">提示</div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="modal-cancel">取消</button>
+      <button class="btn btn-primary" id="modal-ok">确定</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/core.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

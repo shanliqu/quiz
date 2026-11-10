@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>扫码答题 · 入口二维码</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="cast-body">
+  <div class="cast-title">📝 知识竞赛答题</div>
+  <div class="cast-sub" id="cast-sub">微信扫一扫下方二维码，进入答题</div>
+
+  <div id="cast-qr">
+    <canvas id="cast-qr-canvas" width="360" height="360" style="width:360px;height:360px;display:block"></canvas>
+  </div>
+
+  <div class="cast-url" id="cast-url">正在获取地址…</div>
+
+  <div class="cast-stat">
+    <div>答题人数<b id="st-count">0</b></div>
+    <div>平均分<b id="st-avg">0</b></div>
+    <div>最高分<b id="st-max">0</b></div>
+  </div>
+
+  <div class="cast-tip" id="cast-tip">手机需与本机连接同一个 WiFi</div>
+
+  <!-- 无可用网卡 / 地址异常时的提示 -->
+  <div class="cast-warn" id="cast-warn" style="display:none">
+    <div class="cw-title">⚠️ 当前无法自动生成可用二维码</div>
+    <div class="cw-list" id="cw-list"></div>
+    <div class="cw-fix">解决方式：<b>把电脑连上 WiFi 或网线</b>后刷新本页；<br/>
+      或启动服务时手动指定地址：<code>set QUIZ_URL=http://192.168.1.10:8080/</code></div>
+  </div>
+
+  <div class="cast-ifs" id="cast-ifs"></div>
+</div>
+
+<script src="assets/vendor/qrcode.js"></script>
+<script>
+(function(){
+  var canvas = document.getElementById('cast-qr-canvas');
+
+  function draw(text){
+    try{
+      new QRCode(canvas, {
+        text: text, width: 360, height: 360,
+        colorDark: '#0f172a', colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    }catch(e){
+      var ctx = canvas.getContext('2d');
+      if(ctx){ ctx.fillStyle='#ef4444'; ctx.font='16px sans-serif'; ctx.fillText('二维码生成失败', 110, 180); }
+    }
+  }
+
+  function showWarn(msg, list){
+    document.getElementById('cast-warn').style.display = 'block';
+    document.getElementById('cw-list').innerHTML = list || '';
+    document.getElementById('cast-sub').textContent = msg || '请检查网络连接';
+    document.getElementById('cast-qr').style.opacity = '.25';
+  }
+
+  /** 当前站点基础目录（带尾斜杠），兼容子路径托管 */
+  function baseDir(){
+    var p = (location.pathname || '/');
+    if(p.charAt(0) !== '/') p = '/' + p;
+    var last = p.slice(p.lastIndexOf('/') + 1);
+    if(last && last.indexOf('.') === -1) return p.replace(/[^/]*$/, '') + last + '/';
+    return p.replace(/[^/]*$/, '');
+  }
+
+  /**
+   * 解析最终要写入二维码的地址。
+   * 优先级:
+   *   1. 本地服务 /api/info 提供的局域网地址 (局域网模式)
+   *   2. 当前站点基础目录 (GitHub Pages 等子路径托管模式)
+   *      例: https://user.github.io/repo/cast.html -> https://user.github.io/repo/
+   */
+  function resolveUrl(){
+    return fetch('/api/info?t=' + Date.now())
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP '+r.status)); })
+      .then(function(info){
+        var ifs = document.getElementById('cast-ifs');
+        if(info.all && info.all.length){
+          var html = '<b>检测到的网卡：</b><br/>';
+          info.all.forEach(function(c){
+            html += (c.usable ? '🟢 ' : '⚪ ') + c.address + ' &nbsp; ' + c.name +
+                    (c.gateway ? ' &nbsp;网关 ' + c.gateway : ' &nbsp;<i>无网关</i>') + '<br/>';
+          });
+          ifs.innerHTML = html;
+        }
+
+        if(info.fixed && info.url){
+          document.getElementById('cast-tip').textContent = '地址已手动指定';
+          return info.url;
+        }
+        if(info.url){
+          document.getElementById('cast-tip').textContent =
+            '手机需与本机连接同一个 WiFi · 来自网卡: ' + (info.iface||'');
+          return info.url;
+        }
+        // 本地服务但没有可用网卡 -> 退回静态托管地址
+        var base = location.origin + baseDir();
+        document.getElementById('cast-tip').textContent =
+          '本地无可用网卡，当前显示的是静态托管地址（需手机能访问互联网）';
+        return base;
+      })
+      .catch(function(err){
+        // 没有 /api/info => 静态托管模式
+        var base = location.origin + baseDir();
+        document.getElementById('cast-tip').textContent =
+          '静态托管模式（手机需能访问互联网）';
+        return base;
+      });
+  }
+
+  resolveUrl().then(function(url){
+    if(url){
+      document.getElementById('cast-url').textContent = url;
+      draw(url);
+    } else {
+      document.getElementById('cast-url').textContent = '(无可用地址)';
+      // 兜底画本机地址
+      draw(location.origin + '/');
+    }
+  });
+
+  function stats(){
+    try{
+      var arr = JSON.parse(localStorage.getItem('quiz_stats_v1')||'[]');
+      document.getElementById('st-count').textContent = arr.length;
+      if(arr.length){
+        var sum=0,max=0;
+        arr.forEach(function(x){ sum+=x.score; if(x.score>max) max=x.score; });
+        document.getElementById('st-avg').textContent = Math.round(sum/arr.length);
+        document.getElementById('st-max').textContent = max;
+      }
+    }catch(e){}
+  }
+  stats();
+  setInterval(stats, 2000);
+})();
+</script>
+</body>
+</html>
