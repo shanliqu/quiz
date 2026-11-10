@@ -1,5 +1,7 @@
 node_modules/
 __pycache__/
 *.pyc
+.venv*/
+.qr_verify/
 qrcode.png
 .DS_Store
