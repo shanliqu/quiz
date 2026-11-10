@@ -4,4 +4,5 @@ __pycache__/
 .venv*/
 .qr_verify/
 qrcode.png
+online-qr.png
 .DS_Store
